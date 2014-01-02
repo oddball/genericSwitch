@@ -28,15 +28,15 @@ module pingPongBufferBank#(
                            parameter nbrOfBanks = 4,
                            parameter bankAddresses = 8)
    (
-    input                              clk, 
-    input                              rstn,
+    input 			       clk, 
+    input 			       rstn,
     output [$clog2(bankAddresses)-1:0] free,
-    output reg                         initDone,
-    input [parrallelWidth-1:0]         writeData,
-    input                              writeEnable,
+    output reg 			       initDone,
+    input [parrallelWidth-1:0] 	       writeData,
+    input 			       writeEnable,
     output [$clog2(bankAddresses)-1:0] writeAddress,
     input [$clog2(bankAddresses)-1:0]  readAddress,
-    input                              readEnable,
+    input 			       readEnable,
     output [parrallelWidth-1:0]        readData
     );
 
@@ -53,11 +53,11 @@ module pingPongBufferBank#(
         if(rstn==0)
           begin
              freeAddressContainer = {};// clear
-             for(int i=1; i<bankAddresses; i++)
-               freeAddressContainer.push_front(i);
-             nxtAddress<=0;
-             initDone<=0;
-          end
+        for(int i=1; i<bankAddresses; i++)
+          freeAddressContainer.push_front(i);
+        nxtAddress<=0;
+        initDone<=0;
+     end
         else
           begin
              initDone<=1;

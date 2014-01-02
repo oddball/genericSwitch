@@ -23,18 +23,18 @@
 module async_fifo#(parameter width = 1,
                    parameter depth = 4
                    )(input  rstn,
-		     input  writeClk,
-		     input  readClk,
-		     input  read,
-		     input  write,
-		     input[width-1:0]  writeData,
+		     input 		    writeClk,
+		     input 		    readClk,
+		     input 		    read,
+		     input 		    write,
+		     input [width-1:0] 	    writeData,
 		     output reg [width-1:0] readData, 
-		     output reg empty,
-		     output reg full
+		     output reg 	    empty,
+		     output reg 	    full
 		     );
    // TODO, replace this with a synthesizable version
-   reg [width-1:0] 	    fifo[$];
-		
+   reg [width-1:0] 			    fifo[$];
+   
    always@(posedge readClk or negedge rstn)
      begin
 	if(rstn==0)

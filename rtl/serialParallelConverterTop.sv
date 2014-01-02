@@ -63,10 +63,10 @@ module serialParallelConverterTop#(parameter nbrOfPorts = 1,
       for (i=0; i<nbrOfPorts; i++) 
         begin:port
            serialParallelConverter#(
-					  // Parameters
-					  .parrallelWidth    (parrallelWidth),
-					  .serialWidth       (serialWidth))sp
-             (
+				    // Parameters
+				    .parrallelWidth    (parrallelWidth),
+				    .serialWidth       (serialWidth))
+	   sp(
               // Outputs
 	      .popDataStartOfFrame  (popDataStartOfFrame[i]),
               .popData              (popData[i]),
@@ -127,9 +127,9 @@ module serialParallelConverterTop#(parameter nbrOfPorts = 1,
 		       writeData = popData[i];
 		       pop[i]=1;
 		       wroteCell=1;
-		    end
-               end 
-	     break;
+		    end // else: !if(writeRejected == 1)
+		  break;
+               end // if (!empty[i])
           end // for (int i=0; i<nbrOfPorts; i++)	
      end
    

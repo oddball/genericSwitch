@@ -38,7 +38,7 @@ interface pushPortInterface;
    parameter serialWidth = 8;
    parameter nbrOfPorts = 1;
    localparam nbrOfPortsWidth =$clog2(nbrOfPorts);
-   logic                   pushClk;
+   logic   pushClk;
    logic [serialWidth-1:0] pushData;
    logic                   push;
    logic                   pushDataStartOfFrame;
@@ -57,8 +57,8 @@ interface popPortInterface;
 endinterface
 
 class portPushDriver;
-   virtual                     pushPortInterface intf;
-   integer                     srcPort;
+   virtual 		   pushPortInterface intf;
+   integer 		   srcPort;
    function new(virtual pushPortInterface intf,integer srcPort);
       this.intf=intf;
       this.srcPort=srcPort;
@@ -189,7 +189,7 @@ endclass
 
 
 module tb;
- 
+   
    parameter nbrOfPorts = `nbrOfPorts;
    parameter nbrOfBanks = `nbrOfBanks;
    parameter addresses  = `addresses;
@@ -210,24 +210,24 @@ module tb;
 
    /*AUTOREGINPUT*/
    // Beginning of automatic reg inputs (for undeclared instantiated-module inputs)
-   reg                  clk;                    // To DUT of genericSwitch.v
+   reg clk;                    // To DUT of genericSwitch.v
    reg [nbrOfPorts-1:0] pop;                    // To DUT of genericSwitch.v
    reg [nbrOfPorts-1:0] popClk;                 // To DUT of genericSwitch.v
    reg [nbrOfPorts-1:0] push;                   // To DUT of genericSwitch.v
    reg [nbrOfPorts-1:0] pushClk;                // To DUT of genericSwitch.v
    reg [nbrOfPorts-1:0] [serialWidth-1:0] pushData;// To DUT of genericSwitch.v
-   reg [nbrOfPorts-1:0] pushDataEndOfFrame;     // To DUT of genericSwitch.v
-   reg [nbrOfPorts-1:0] pushDataError;          // To DUT of genericSwitch.v
-   reg [nbrOfPorts-1:0] pushDataStartOfFrame;   // To DUT of genericSwitch.v
-   reg                  rstn;                   // To DUT of genericSwitch.v
+   reg [nbrOfPorts-1:0] 		  pushDataEndOfFrame;     // To DUT of genericSwitch.v
+   reg [nbrOfPorts-1:0] 		  pushDataError;          // To DUT of genericSwitch.v
+   reg [nbrOfPorts-1:0] 		  pushDataStartOfFrame;   // To DUT of genericSwitch.v
+   reg 					  rstn;                   // To DUT of genericSwitch.v
    // End of automatics
    /*AUTOWIRE*/
    // Beginning of automatic wires (for undeclared instantiated-module outputs)
    wire [nbrOfPorts-1:0] [serialWidth-1:0] popData;// From DUT of genericSwitch.v
-   wire [nbrOfPorts-1:0] popDataEndOfFrame;     // From DUT of genericSwitch.v
-   wire [nbrOfPorts-1:0] popDataError;          // From DUT of genericSwitch.v
-   wire [nbrOfPorts-1:0] popDataPresent;        // From DUT of genericSwitch.v
-   wire [nbrOfPorts-1:0] popDataStartOfFrame;   // From DUT of genericSwitch.v
+   wire [nbrOfPorts-1:0] 		   popDataEndOfFrame;     // From DUT of genericSwitch.v
+   wire [nbrOfPorts-1:0] 		   popDataError;          // From DUT of genericSwitch.v
+   wire [nbrOfPorts-1:0] 		   popDataPresent;        // From DUT of genericSwitch.v
+   wire [nbrOfPorts-1:0] 		   popDataStartOfFrame;   // From DUT of genericSwitch.v
    // End of automatics
    
 
